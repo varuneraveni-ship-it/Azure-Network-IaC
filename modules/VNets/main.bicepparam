@@ -1,0 +1,9 @@
+using './main.bicep'
+
+param vnetName = 'vnet-hub-westus'
+
+param location = 'westus'
+
+param addressPrefixes = [
+  '10.193.192.0/22'
+]
