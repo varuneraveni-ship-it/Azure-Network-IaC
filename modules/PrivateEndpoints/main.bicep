@@ -1,9 +1,12 @@
-@description('Private DNS Zone Name')
-param dnsZoneName string
+@description('Private Endpoint Name')
+param privateEndpointName string
 
-resource privateDnsZone 'Microsoft.Network/privateDnsZones@2024-06-01' = {
-  name: dnsZoneName
-  location: 'global'
+@description('Location')
+param location string
+
+resource privateEndpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = {
+  name: privateEndpointName
+  location: location
 }
 
-output dnsZoneId string = privateDnsZone.id
+output privateEndpointId string = privateEndpoint.id

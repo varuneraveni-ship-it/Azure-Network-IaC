@@ -1,44 +1,57 @@
-# Current State - Private DNS
+# Current State - Private Endpoints
 
-## Key Private DNS Zones
+## Total Environment
 
-### Azure Services
+Private Endpoints exist in:
 
-- privatelink.blob.core.windows.net
-- privatelink.file.core.windows.net
-- privatelink.queue.core.windows.net
-- privatelink.table.core.windows.net
-- privatelink.database.windows.net
-- privatelink.vaultcore.azure.net
-- privatelink.azurewebsites.net
-- privatelink.azurecr.io
-- privatelink.openai.azure.com
+- rg-network
+- rg-applications
+- rg-storage
+- rg-database
+- rg-ai
+- rg-vdi
+- rg-team-nr
+- rg-networkEUS
+- rg-backups
 
-### Azure AI
+## Key Services
 
-- privatelink.cognitiveservices.azure.com
-- privatelink.services.ai.azure.com
-- privatelink.openai.azure.com
+### Azure OpenAI
 
-### AVD
+- pe-ladbschatgpt
+- pe-ladbschatgptentra
+- pe-dev-aichat
 
-- privatelink.wvd.microsoft.com
-- privatelink-global.wvd.microsoft.com
+### Storage
+
+- pe-saladbsprod
+- pe-saladbsprod2
+- pe-saladbsfileshare-blob
+- pe-rdrive
 
 ### Databases
 
-- privatelink.mysql.database.azure.com
-- privatelink.postgres.database.azure.com
+- pe-ladbs-postgres-prd
+- pu-ladbs-postgres-prd-eus
+- pe-sql-nmw-app-db
 
-### Oracle Cloud
+### Key Vault
 
-- rs.br.us-sanjose-1.oraclecloud.com
-- ocisnoci.ocivnetproduct.oraclevcn.com
+- pe-kv-ladbs
+- pe-kv-lacps-fabric
 
-### Confluent
+### Web Applications
 
-- westus2.azure.private.confluent.cloud
+- pe-ladbs-web
+- pe-ladbs-concept-website
+- pe-drupal-prd
+
+## Locations
+
+- westus
+- eastus
+- westus3
 
 ## Source
 
-Generated from Azure inventory.
+Generated from Azure discovery.

@@ -1,12 +1,21 @@
-# Private DNS Module
+# Private Endpoints Module
 
 ## Purpose
 
-Reusable Azure Private DNS Zone deployment module.
+Reusable Azure Private Endpoint deployment module.
 
-## Source
+## Environment
 
-Based on LADBS Azure Private DNS inventory.
+LADBS contains Private Endpoints for:
+
+- Azure OpenAI
+- Storage
+- PostgreSQL
+- SQL
+- Key Vault
+- App Services
+- AVD
+- Azure AI Services
 
 ## Status
 

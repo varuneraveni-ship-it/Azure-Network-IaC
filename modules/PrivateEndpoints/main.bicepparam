@@ -1,3 +1,5 @@
 using './main.bicep'
 
-param dnsZoneName = 'privatelink.blob.core.windows.net'
+param privateEndpointName = 'pe-ladbschatgpt'
+
+param location = 'westus'
