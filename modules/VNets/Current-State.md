@@ -1,30 +1,104 @@
-# Current State - VNet Hub WestUS
+# Current State - vnet-hub-westus
 
-VNet Name:
-vnet-hub-westus
+## VNet Information
 
-Resource Group:
-rg-network
+Name: vnet-hub-westus
 
-Location:
-westus
+Resource Group: rg-network
+
+Location: westus
+
+Provisioning State: Succeeded
 
 Address Space:
-10.193.192.0/22
+- 10.193.192.0/22
 
-Subnets:
+## DNS Servers
 
-- AzureBastionSubnet
-  - 10.193.193.0/26
+- 10.193.204.36
+- 10.193.194.5
+- 10.193.194.6
 
-- ApplicationGatewaySubnet
-  - 10.193.195.0/27
+## Subnets
 
-- AzureDnsInbound
-  - 10.193.193.160/28
+### AzureBastionSubnet
 
-- AzureDnsOutbound
-  - 10.193.193.176/28
+Address Prefix:
+- 10.193.193.0/26
 
-- IdentitySubnet
-  - 10.193.194.0/28
+Purpose:
+- Azure Bastion
+
+### ApplicationGatewaySubnet
+
+Address Prefix:
+- 10.193.195.0/27
+
+Associated NSG:
+- nsg-ag-dmz
+
+Associated Route Table:
+- rt-dmz
+
+Purpose:
+- Azure Application Gateway
+
+### AzureDnsInbound
+
+Address Prefix:
+- 10.193.193.160/28
+
+Delegation:
+- Microsoft.Network/dnsResolvers
+
+Purpose:
+- Azure DNS Private Resolver Inbound Endpoint
+
+### AzureDnsOutbound
+
+Address Prefix:
+- 10.193.193.176/28
+
+Delegation:
+- Microsoft.Network/dnsResolvers
+
+Purpose:
+- Azure DNS Private Resolver Outbound Endpoint
+
+### IdentitySubnet
+
+Address Prefix:
+- 10.193.194.0/28
+
+Associated NSG:
+- aadds-nsg
+
+Associated NAT Gateway:
+- ng-hubvnet
+
+Purpose:
+- Azure AD DS / Identity Services
+
+## VNet Peerings
+
+### Virtual WAN Hub
+
+Remote Network:
+- HV_vwan-hub-westus
+
+Remote Address Space:
+- 10.193.208.0/23
+
+Status:
+- Connected
+
+### East US Production
+
+Remote Network:
+- vnet-production-eastus
+
+Remote Address Space:
+- 10.193.104.0/21
+
+Status:
+- Connected
