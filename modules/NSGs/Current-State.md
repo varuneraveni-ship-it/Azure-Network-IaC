@@ -1,121 +1,74 @@
-# Current State - nsg-ladbsproduction
+# Current State - nsg-ag-dmz
 
 ## Resource Group
 
-rg-network
+rg-servers
 
 ## Purpose
 
-Protects Azure SQL Managed Instance subnet.
+Protects the Application Gateway subnet.
 
-Subnet:
-10.193.204.0/27
+Associated Subnet:
+ApplicationGatewaySubnet
 
 ---
 
 ## Inbound Rules
 
-### allow_tds_inbound
+### AllowAnyCustom80443Inbound
 
-Priority: 1000
-
-Access: Allow
-
-Source:
-VirtualNetwork
-
-Ports:
-1433,1434
-
-Purpose:
-SQL connectivity
-
----
-
-### allow_redirect_inbound
-
-Priority: 1100
-
-Access: Allow
+Priority: 210
 
 Protocol: TCP
 
 Ports:
-11000-11999
+- 80
+- 443
 
 Purpose:
-SQL redirect traffic
+Allow HTTP and HTTPS traffic to Application Gateway.
 
 ---
 
-### allow_geodr_inbound
+### AllowInternet65200-65535Inbound
 
-Priority: 1200
-
-Access: Allow
-
-Protocol: TCP
+Priority: 230
 
 Ports:
-5022
+65200-65535
 
 Purpose:
-Geo-DR replication
+Application Gateway infrastructure communication.
 
 ---
 
-### deny_all_inbound
+### AllowAzureLoadBalancerInboundd
 
-Priority: 4096
+Priority: 490
 
-Access: Deny
+Purpose:
+Azure Load Balancer health and platform traffic.
+
+---
+
+### AllowInternet65503-65534
+
+Priority: 495
 
 Ports:
-All
+65503-65534
 
 Purpose:
-Block remaining inbound traffic
+Application Gateway service communication.
 
 ---
 
-## Outbound Rules
+### DenyAllOtherTraffic
 
-### allow_privatelink_outbound
+Priority: 500
 
-Priority: 1300
-
-Protocol: TCP
-
-Port:
-443
-
-Destination:
-VirtualNetwork
+Access:
+Deny
 
 Purpose:
-Private Endpoint traffic
-
----
-
-### allow_azurecloud_outbound
-
-Priority: 1400
-
-Protocol: TCP
-
-Port:
-443
-
-Destination:
-AzureCloud
-
-Purpose:
-Azure service connectivity
-
----
-
-### deny_all_outbound
-
-Priority: 4096
-
-Access: Deny
+Block all other inbound traffic.
