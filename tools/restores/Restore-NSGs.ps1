@@ -22,6 +22,12 @@ if (Test-Path $BackupFile)
     Write-Host ""
     Write-Host "Backup Loaded Successfully"
     Write-Host "Objects Found: $($NSGs.Count)"
+    Write-Host ""
+    Write-Host "Showing backup contents..."
+
+$NSGs | Select-Object -First 5
+
+    
 }
 else
 {
