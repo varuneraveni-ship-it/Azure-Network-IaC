@@ -102,3 +102,43 @@ Remote Address Space:
 
 Status:
 - Connected
+
+
+# vnet-hub-westus
+
+## General
+
+Resource Group: rg-network
+
+Location: westus
+
+Address Space:
+- 10.193.192.0/22
+
+DNS Servers:
+- 10.193.204.36
+- 10.193.194.5
+- 10.193.194.6
+
+## Subnets
+
+| Subnet | Prefix |
+|----------|----------|
+| AzureBastionSubnet | 10.193.193.0/26 |
+| ApplicationGatewaySubnet | 10.193.195.0/27 |
+| AzureDnsInbound | 10.193.193.160/28 |
+| AzureDnsOutbound | 10.193.193.176/28 |
+| IdentitySubnet | 10.193.194.0/28 |
+
+## Services
+
+- Azure Bastion
+- Application Gateway
+- Azure DNS Private Resolver
+- Azure AD DS
+- NAT Gateway
+
+## Peerings
+
+- Virtual WAN Hub
+- vnet-production-eastus
