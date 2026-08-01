@@ -14,3 +14,5 @@ resource frontDoorProfile 'Microsoft.Cdn/profiles@2024-02-01' = {
 }
 
 output frontDoorId string = frontDoorProfile.id
+
+output frontDoorNameOutput string = frontDoorProfile.name

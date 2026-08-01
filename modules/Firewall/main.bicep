@@ -10,3 +10,4 @@ resource firewall 'Microsoft.Network/azureFirewalls@2024-05-01' = {
 }
 
 output firewallId string = firewall.id
+
